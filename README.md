@@ -2,7 +2,8 @@
 
 - **Nome do aluno:** Davi herique Scartezini
 - **Nome do curso:** Tecnico para informatica
-- **Unidade curricular:** 
+- **Unidade curricular:** Codificar aplicações para dispositivos móveis
+
 
 Descrição
 ---------
