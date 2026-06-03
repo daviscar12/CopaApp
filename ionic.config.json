@@ -1,0 +1,7 @@
+{
+  "name": "CopaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
