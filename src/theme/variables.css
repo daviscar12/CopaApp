@@ -1,2 +1,24 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/* Copa do Mundo theme variables */
+:root {
+	--ion-color-primary: #006837; /* green */
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-secondary: #f7b500; /* gold */
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-tertiary: #00247d; /* deep blue */
+	--ion-background-color: #f4f7f2;
+	--ion-font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+	background: linear-gradient(180deg, #e9f3e9 0%, #f4f7f2 100%);
+}
+
+.world-hero {
+	background: linear-gradient(135deg, rgba(0,104,55,0.9), rgba(247,181,0,0.9));
+	color: white;
+}
+
+.card-accent {
+	border-left: 6px solid var(--ion-color-secondary);
+}
+
