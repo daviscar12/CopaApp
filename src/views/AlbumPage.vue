@@ -33,6 +33,9 @@
       </ion-segment>
 
       <StickerList :stickers="filtered" @toggle="toggle" />
+      <div class="footer-link">
+        <router-link to="/about">Sobre o aplicativo</router-link>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -100,5 +103,17 @@ function toggle(id: number) { toggleCollected(id); }
   background: linear-gradient(90deg, #006837 0%, #f7b500 100%);
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 6px;
+}
+.footer-link {
+  margin-top: 24px;
+  text-align: center;
+}
+.footer-link a {
+  color: #006837;
+  font-weight: 600;
+  text-decoration: none;
+}
+.footer-link a:hover {
+  text-decoration: underline;
 }
 </style>

@@ -4,6 +4,9 @@ import LoginPage from '../views/LoginPage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import ResetPasswordPage from '../views/ResetPasswordPage.vue'
 import AlbumPage from '../views/AlbumPage.vue'
+import AboutPage from '../views/AboutPage.vue'
+import TermsPage from '../views/TermsPage.vue'
+import PrivacyPage from '../views/PrivacyPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -29,6 +32,21 @@ const routes: Array<RouteRecordRaw> = [
     path: '/album',
     name: 'Album',
     component: AlbumPage
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: AboutPage
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: TermsPage
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: PrivacyPage
   }
 ]
 

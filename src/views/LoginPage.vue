@@ -21,6 +21,7 @@
             <div class="auth-links">
               <router-link to="/reset">Esqueci minha senha</router-link>
               <router-link to="/register">Criar conta</router-link>
+              <router-link to="/about">Sobre</router-link>
             </div>
           </ion-card-content>
         </ion-card>
