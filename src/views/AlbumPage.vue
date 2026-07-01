@@ -44,15 +44,43 @@
 import AppHeader from '../components/AppHeader.vue';
 import StickerList from '../components/StickerList.vue';
 import { useAlbum } from '../composables/useAlbum';
-import { computed } from 'vue';
-import { IonPage, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonSearchbar, IonSegment, IonSegmentButton } from '@ionic/vue';
+import { computed, onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuth } from '../composables/useAuth';
+import { IonPage, IonContent, IonCard, IonCardContent, IonSearchbar, IonSegment, IonSegmentButton } from '@ionic/vue';
 
-const { stickers, filtered, search, filter, toggleCollected } = useAlbum();
+const router = useRouter();
+const { current } = useAuth();
+const { stickers, filtered, search, filter, loadStickers, toggleCollected } = useAlbum();
 
 const collectedCount = computed(() => (stickers.value || []).filter((s: any) => s.collected).length);
-const progressPercent = computed(() => Math.round((collectedCount.value / stickers.value.length) * 100) || 0);
+const progressPercent = computed(() => Math.round((collectedCount.value / Math.max(stickers.value.length, 1)) * 100) || 0);
 
-function toggle(id: number) { toggleCollected(id); }
+async function toggle(id: number) {
+  if (!current.value?.id) {
+    router.push('/login');
+    return;
+  }
+
+  await toggleCollected(id, current.value.id);
+}
+
+watch([search, filter, current], async () => {
+  if (!current.value?.id) {
+    return;
+  }
+
+  await loadStickers(current.value.id);
+}, { deep: true });
+
+onMounted(async () => {
+  if (!current.value?.id) {
+    router.push('/login');
+    return;
+  }
+
+  await loadStickers(current.value.id);
+});
 </script>
 
 <style scoped>

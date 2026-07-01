@@ -36,9 +36,9 @@ import { IonPage, IonContent, IonCard, IonCardContent } from '@ionic/vue';
 const router = useRouter();
 const { register } = useAuth();
 
-function onRegister(payload: { name: string; email: string; password: string }) {
+async function onRegister(payload: { name: string; email: string; password: string }) {
   try {
-    register(payload);
+    await register(payload);
     router.push('/album');
   } catch (e: any) {
     alert(e.message || 'Erro');

@@ -7,6 +7,7 @@ import AlbumPage from '../views/AlbumPage.vue'
 import AboutPage from '../views/AboutPage.vue'
 import TermsPage from '../views/TermsPage.vue'
 import PrivacyPage from '../views/PrivacyPage.vue'
+import { useAuth } from '../composables/useAuth';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,7 +32,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/album',
     name: 'Album',
-    component: AlbumPage
+    component: AlbumPage,
+    beforeEnter: () => {
+      const { current } = useAuth();
+      if (!current.value?.id) {
+        return '/login';
+      }
+      return true;
+    }
   },
   {
     path: '/about',
