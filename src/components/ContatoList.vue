@@ -48,14 +48,14 @@
 <script setup lang="ts">
 import {ref, onMounted, onBeforeUnmount, computed} from 'vue';
 import { IonAlert, IonItem, IonItemOption, IonItemSliding, IonLabel, IonList, IonItemOptions } from '@ionic/vue';
-import { listContatos, updateContato, deleteContatoById } from '@/service/database';
+import { listContatos, updateContato, deleteContatoById } from '@/database';
 
 const contatos = ref<any[]>([]);
-const editAlert = ref({open: false, error: '', data: { id: null as number | null, nome: '', email: '', telefone: ''}})
+const editAlert = ref({open: false, error: '', data: { id: null as number | null, name: '', email: '', telefone: ''}})
 const deleteAlert = ref({open: false, contatoId: null as number | null})
 
 const editInputs = computed(() => [
-    { name: 'nome', type: 'text', placeholder: 'Nome', value: editAlert.value.data.nome },
+    { name: 'name', type: 'text', placeholder: 'Nome', value: editAlert.value.data.name },
     { name: 'email', type: 'email', placeholder: 'Email', value: editAlert.value.data.email },
     { name: 'telefone', type: 'tel', placeholder: 'Telefone', value: editAlert.value.data.telefone }
 ])
@@ -74,7 +74,7 @@ function editarContato(contato: any) {
         error: '',
         data: {
             id: contato.id,
-            nome: contato.name,
+            name: contato.name,
             email: contato.email,
             telefone: contato.telefone
          },
@@ -99,7 +99,7 @@ async function salvarEdicao(values: any) {
         return
     }
 
-    const nome = values?.nome?? editAlert.value.data.nome
+    const nome = values?.name ?? editAlert.value.data.name
     const email = values?.email ?? editAlert.value.data.email
     const telefone = values?.telefone ?? editAlert.value.data.telefone
 

@@ -4,6 +4,7 @@ import LoginPage from '../views/LoginPage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import ResetPasswordPage from '../views/ResetPasswordPage.vue'
 import AlbumPage from '../views/AlbumPage.vue'
+import AchievementsPage from '../views/AchievementsPage.vue'
 import AboutPage from '../views/AboutPage.vue'
 import TermsPage from '../views/TermsPage.vue'
 import PrivacyPage from '../views/PrivacyPage.vue'
@@ -16,22 +17,22 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'Entrar',
     component: LoginPage
   },
   {
     path: '/register',
-    name: 'Register',
+    name: 'Registrar',
     component: RegisterPage
   },
   {
     path: '/reset',
-    name: 'Reset',
+    name: 'RedefinirSenha',
     component: ResetPasswordPage
   },
   {
     path: '/album',
-    name: 'Album',
+    name: 'Álbum',
     component: AlbumPage,
     beforeEnter: () => {
       const { current } = useAuth();
@@ -42,18 +43,30 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/achievements',
+    name: 'Conquistas',
+    component: AchievementsPage,
+    beforeEnter: () => {
+      const { current } = useAuth();
+      if (!current.value?.id) {
+        return '/login';
+      }
+      return true;
+    }
+  },
+  {
     path: '/about',
-    name: 'About',
+    name: 'Sobre',
     component: AboutPage
   },
   {
     path: '/terms',
-    name: 'Terms',
+    name: 'Termos',
     component: TermsPage
   },
   {
     path: '/privacy',
-    name: 'Privacy',
+    name: 'Privacidade',
     component: PrivacyPage
   }
 ]

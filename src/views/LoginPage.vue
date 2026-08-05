@@ -1,5 +1,13 @@
 <template>
   <ion-page class="auth-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/" />
+        </ion-buttons>
+        <ion-title>Entrar</ion-title>
+      </ion-toolbar>
+    </ion-header>
     <ion-content class="ion-padding" fullscreen>
       <div class="auth-hero">
         <img class="hero-ball" src="/assets/ball.svg" alt="ball" />
@@ -34,7 +42,7 @@
 import LoginForm from '../components/LoginForm.vue';
 import { useAuth } from '../composables/useAuth';
 import { useRouter } from 'vue-router';
-import { IonPage, IonContent, IonCard, IonCardContent } from '@ionic/vue';
+import { IonPage, IonContent, IonCard, IonCardContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/vue';
 
 const router = useRouter();
 const { login } = useAuth();

@@ -1,20 +1,27 @@
 <template>
   <ion-header class="world-hero">
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/" />
+      </ion-buttons>
       <ion-title>{{ title }}</ion-title>
     </ion-toolbar>
   </ion-header>
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton } from '@ionic/vue';
 const props = defineProps<{ title?: string }>();
-const title = props.title ?? 'Album';
+const title = props.title ?? 'Álbum';
 </script>
 
 <style scoped>
 .world-hero ion-toolbar {
   background: linear-gradient(90deg, rgba(0,104,55,0.95), rgba(0,36,125,0.95));
   color: #fff;
+}
+/* Ensure title contrast when header background is light */
+:host ::v-deep ion-title {
+  color: inherit;
 }
 </style>
