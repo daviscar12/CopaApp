@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { IonList, IonItem, IonLabel, IonInput, IonButton, IonToast } from '@ionic/vue';
 import { reactive } from 'vue';
-import { addContato } from '@/service/database';
+import { addContato } from '@/database';
 
 const form = reactive({nome: '', email: '', telefone: ''});
 const toast = reactive({message: '', show: false});

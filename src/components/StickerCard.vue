@@ -9,19 +9,36 @@
         <h3>{{ sticker.name }}</h3>
         <p>{{ sticker.team }}</p>
       </div>
-      <ion-button fill="clear" color="secondary" @click="$emit('toggle', sticker.id)" class="sticker-btn">
-        <ion-icon :icon="sticker.collected ? checkmarkCircle : addCircle"></ion-icon>
-      </ion-button>
+        <div class="sticker-actions">
+        <ion-button fill="clear" color="secondary" @click="toggleCollected" class="sticker-btn">
+          <ion-icon :icon="sticker.collected ? checkmarkCircle : addCircle"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" color="warning" @click.stop="toggleFavorite" class="sticker-btn favorite-btn">
+          <ion-icon :icon="sticker.favorite ? star : starOutline"></ion-icon>
+        </ion-button>
+      </div>
     </div>
   </ion-card>
 </template>
 
 <script setup lang="ts">
 import { IonCard, IonButton, IonIcon } from '@ionic/vue';
-import { checkmarkCircle, addCircle } from 'ionicons/icons';
+import { checkmarkCircle, addCircle, star, starOutline } from 'ionicons/icons';
 
-interface Sticker { id: number; name: string; team: string; image?: string; collected?: boolean }
+interface Sticker { id: number; name: string; team: string; image?: string; collected?: boolean; favorite?: boolean }
 const { sticker } = defineProps<{ sticker: Sticker }>();
+const emit = defineEmits<{
+  (e: 'toggle', id: number): void;
+  (e: 'favorite', id: number): void;
+}>();
+
+function toggleCollected() {
+  emit('toggle', sticker.id);
+}
+
+function toggleFavorite() {
+  emit('favorite', sticker.id);
+}
 </script>
 
 <style scoped>

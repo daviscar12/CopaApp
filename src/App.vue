@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import {onMounted} from 'vue';
-import {initDatabase} from '@/service/database';
+import { initDatabase } from '@/database';
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 
 onMounted(async () => {

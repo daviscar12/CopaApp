@@ -6,7 +6,7 @@
     <ion-grid v-else>
       <ion-row>
         <ion-col size="12" size-sm="6" size-md="4" size-lg="3" v-for="s in stickers" :key="s.id">
-          <StickerCard :sticker="s" @toggle="toggle" />
+          <StickerCard :sticker="s" @toggle="toggle" @favorite="favorite" />
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -17,14 +17,16 @@
 import StickerCard from './StickerCard.vue';
 import { IonGrid, IonRow, IonCol } from '@ionic/vue';
 
-interface Sticker { id: number; name: string; team: string; image?: string; collected?: boolean }
+interface Sticker { id: number; name: string; team: string; image?: string; collected?: boolean; favorite?: boolean }
 
 const { stickers } = defineProps<{ stickers: Sticker[] }>();
 const emit = defineEmits<{
-  (e: 'toggle', id: number): void
+  (e: 'toggle', id: number): void;
+  (e: 'favorite', id: number): void;
 }>();
 
 function toggle(id: number) { emit('toggle', id); }
+function favorite(id: number) { emit('favorite', id); }
 </script>
 
 <style scoped>

@@ -1,5 +1,13 @@
 <template>
   <ion-page class="auth-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/" />
+        </ion-buttons>
+        <ion-title>Recuperar Senha</ion-title>
+      </ion-toolbar>
+    </ion-header>
     <ion-content class="ion-padding" fullscreen>
       <div class="auth-hero auth-hero-small">
         <div class="hero-text">
@@ -31,7 +39,7 @@
 import ResetPasswordForm from '../components/ResetPasswordForm.vue';
 import { useAuth } from '../composables/useAuth';
 import { useRouter } from 'vue-router';
-import { IonPage, IonContent, IonCard, IonCardContent } from '@ionic/vue';
+import { IonPage, IonContent, IonCard, IonCardContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/vue';
 
 const router = useRouter();
 const { resetPassword } = useAuth();
@@ -64,12 +72,12 @@ function onReset(payload: { email: string }) {
 .hero-text h1 {
   margin: 0;
   font-size: 32px;
-  color: #fff;
+  color: black;
 }
 .hero-text p {
   margin: 10px auto 0;
   max-width: 320px;
-  color: rgba(255, 255, 255, 0.95);
+  color: black;
   font-size: 15px;
   line-height: 1.6;
 }
